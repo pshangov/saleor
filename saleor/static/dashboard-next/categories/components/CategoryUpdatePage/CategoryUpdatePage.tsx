@@ -54,7 +54,6 @@ export interface CategoryUpdatePageProps extends WithStyles<typeof styles> {
   onPreviousPage();
   onProductClick(id: string): () => void;
   onAddProduct();
-  onBack();
   onDelete();
   onAddCategory();
   onCategoryClick(id: string): () => void;
@@ -74,7 +73,6 @@ export const CategoryUpdatePage = withStyles(styles, {
     subcategories,
     onAddCategory,
     onAddProduct,
-    onBack,
     onCategoryClick,
     onDelete,
     onNextPage,
@@ -102,11 +100,11 @@ export const CategoryUpdatePage = withStyles(styles, {
         errors={userErrors}
         confirmLeave
       >
-        {({ data, change, errors, submit, hasChanged }) => (
+        {({ data, change, errors, reset, submit, hasChanged }) => (
           <Container width="md">
             <PageHeader
               title={category ? category.name : undefined}
-              onBack={onBack}
+              back={true}
             />
             <CategoryDetailsForm
               data={data}
@@ -180,7 +178,7 @@ export const CategoryUpdatePage = withStyles(styles, {
               )}
             </Tabs>
             <SaveButtonBar
-              onCancel={onBack}
+              onCancel={reset}
               onDelete={onDelete}
               onSave={submit}
               labels={{

@@ -43,7 +43,6 @@ export interface StaffDetailsPageProps extends WithStyles<typeof styles> {
   permissions: StaffMemberDetails_shop_permissions[];
   saveButtonBarState: ConfirmButtonTransitionState;
   staffMember: StaffMemberDetails_user;
-  onBack: () => void;
   onDelete: () => void;
   onSubmit: (data: FormData) => void;
 }
@@ -55,7 +54,6 @@ const StaffDetailsPage = withStyles(styles, { name: "StaffDetailsPage" })(
     permissions,
     saveButtonBarState,
     staffMember,
-    onBack,
     onDelete,
     onSubmit
   }: StaffDetailsPageProps) => {
@@ -77,12 +75,9 @@ const StaffDetailsPage = withStyles(styles, { name: "StaffDetailsPage" })(
     };
     return (
       <Form initial={initialForm} onSubmit={onSubmit} confirmLeave>
-        {({ data, change, hasChanged, submit }) => (
+        {({ data, change, hasChanged, reset, submit }) => (
           <Container width="md">
-            <PageHeader
-              title={maybe(() => staffMember.email)}
-              onBack={onBack}
-            />
+            <PageHeader title={maybe(() => staffMember.email)} back={true} />
             <div className={classes.root}>
               <div>
                 <StaffProperties
@@ -109,7 +104,7 @@ const StaffDetailsPage = withStyles(styles, { name: "StaffDetailsPage" })(
             <SaveButtonBar
               disabled={disabled || !hasChanged}
               state={saveButtonBarState}
-              onCancel={onBack}
+              onCancel={reset}
               onSave={submit}
               onDelete={onDelete}
             />

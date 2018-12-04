@@ -46,7 +46,6 @@ export interface CollectionCreatePageProps extends WithStyles<typeof styles> {
   disabled: boolean;
   errors: UserError[];
   saveButtonBarState: ConfirmButtonTransitionState;
-  onBack: () => void;
   onSubmit: (data: CollectionCreatePageFormData) => void;
 }
 
@@ -69,17 +68,16 @@ const CollectionCreatePage = withStyles(styles, {
     disabled,
     errors,
     saveButtonBarState,
-    onBack,
     onSubmit
   }: CollectionCreatePageProps) => (
     <Form errors={errors} initial={initialForm} onSubmit={onSubmit}>
-      {({ change, data, errors: formErrors, hasChanged, submit }) => (
+      {({ change, data, errors: formErrors, hasChanged, reset, submit }) => (
         <Container width="md">
           <PageHeader
             title={i18n.t("Add collection", {
               context: "page title"
             })}
-            onBack={onBack}
+            back={true}
           />
           <div className={classes.root}>
             <div>
@@ -161,7 +159,7 @@ const CollectionCreatePage = withStyles(styles, {
           <SaveButtonBar
             state={saveButtonBarState}
             disabled={disabled || !hasChanged}
-            onCancel={onBack}
+            onCancel={reset}
             onSave={submit}
           />
         </Container>
