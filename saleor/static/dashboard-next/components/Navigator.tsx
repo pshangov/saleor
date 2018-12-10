@@ -52,4 +52,22 @@ export const NavigatorLink: React.StatelessComponent<NavigatorLinkProps> = ({
 );
 NavigatorLink.displayName = "NavigatorLink";
 
+interface BackProps {
+  children: (back: () => void) => React.ReactElement<any>;
+}
+export const Back: React.StatelessComponent<BackProps> = (
+  { children },
+  { router }
+) => {
+  invariant(router, "You should not use <Back> outside a <Router>");
+  return children(() => router.history.goBack());
+};
+Back.contextTypes = {
+  router: PropTypes.shape({
+    history: PropTypes.shape({
+      goBack: PropTypes.func.isRequired
+    }).isRequired
+  })
+};
+
 export default Navigator;

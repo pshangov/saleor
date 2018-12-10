@@ -8,6 +8,7 @@ import {
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import * as classNames from "classnames";
 import * as React from "react";
+import { Back } from "../Navigator";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -51,13 +52,17 @@ const ExtendedPageHeader = withStyles(styles, { name: "ExtendedPageHeader" })(
   ({ back, children, classes, className, title }: ExtendedPageHeaderProps) => (
     <div className={classNames(classes.root, className)}>
       {back && (
-        <IconButton
-          color="inherit"
-          className={classes.menuButton}
-          onClick={() => window.history.back()}
-        >
-          <ArrowBackIcon />
-        </IconButton>
+        <Back>
+          {back => (
+            <IconButton
+              color="inherit"
+              className={classes.menuButton}
+              onClick={back}
+            >
+              <ArrowBackIcon />
+            </IconButton>
+          )}
+        </Back>
       )}
       {title}
       <div className={classes.action}>{children}</div>
@@ -65,4 +70,7 @@ const ExtendedPageHeader = withStyles(styles, { name: "ExtendedPageHeader" })(
   )
 );
 ExtendedPageHeader.displayName = "ExtendedPageHeader";
+ExtendedPageHeader.defaultProps = {
+  back: false
+};
 export default ExtendedPageHeader;
