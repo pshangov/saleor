@@ -10487,7 +10487,7 @@ exports[`Storyshots Views / Collections / Collection details default 1`] = `
                 >
                   <td
                     class="MuiTableCell-root-id MuiTableCell-footer-id TablePagination-root-id"
-                    colspan="4"
+                    colspan="5"
                   >
                     <div
                       class="MuiToolbar-root-id MuiToolbar-regular-id MuiToolbar-gutters-id TablePagination-toolbar-id"
@@ -11339,7 +11339,7 @@ exports[`Storyshots Views / Collections / Collection details loading 1`] = `
                 >
                   <td
                     class="MuiTableCell-root-id MuiTableCell-footer-id TablePagination-root-id"
-                    colspan="4"
+                    colspan="5"
                   >
                     <div
                       class="MuiToolbar-root-id MuiToolbar-regular-id MuiToolbar-gutters-id TablePagination-toolbar-id"
@@ -11458,8 +11458,9 @@ exports[`Storyshots Views / Collections / Collection details loading 1`] = `
                     class="MuiTableCell-root-id MuiTableCell-body-id CollectionProducts-iconCell-id"
                   >
                     <button
-                      class="MuiButtonBase-root-id MuiIconButton-root-id"
-                      tabindex="0"
+                      class="MuiButtonBase-root-id MuiButtonBase-disabled-id MuiIconButton-root-id MuiIconButton-disabled-id"
+                      disabled=""
+                      tabindex="-1"
                       type="button"
                     >
                       <span
@@ -12097,7 +12098,7 @@ exports[`Storyshots Views / Collections / Collection details no products 1`] = `
                 >
                   <td
                     class="MuiTableCell-root-id MuiTableCell-footer-id TablePagination-root-id"
-                    colspan="4"
+                    colspan="5"
                   >
                     <div
                       class="MuiToolbar-root-id MuiToolbar-regular-id MuiToolbar-gutters-id TablePagination-toolbar-id"
@@ -12167,7 +12168,7 @@ exports[`Storyshots Views / Collections / Collection details no products 1`] = `
                   />
                   <td
                     class="MuiTableCell-root-id MuiTableCell-body-id"
-                    colspan="4"
+                    colspan="5"
                   >
                     No products found
                   </td>
