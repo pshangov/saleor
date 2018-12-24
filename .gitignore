@@ -5,6 +5,7 @@
 !.codeclimate.yml
 !.coveragerc
 !.dockerignore
+!.ebextensions
 !.eslintrc.json
 !.flowconfig
 !.gqlconfig
