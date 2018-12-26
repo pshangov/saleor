@@ -49,10 +49,24 @@ if REDIS_URL:
     CACHE_URL = os.environ.setdefault('CACHE_URL', REDIS_URL)
 CACHES = {'default': django_cache_url.config()}
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://saleor:saleor@localhost:5432/saleor',
-        conn_max_age=600)}
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('RDS_DB_NAME'),
+            'USER': os.environ.get('RDS_USERNAME'),
+            'PASSWORD': os.environ.get('RDS_PASSWORD'),
+            'HOST': os.environ.get('RDS_HOSTNAME'),
+            'PORT': os.environ.get('RDS_PORT'),
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgres://saleor:saleor@localhost:5432/saleor',
+            conn_max_age=600
+        )
+    }
 
 
 TIME_ZONE = 'America/Chicago'
