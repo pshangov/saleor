@@ -1,5 +1,5 @@
 const autoprefixer = require('autoprefixer');
-// const { CheckerPlugin } = require('awesome-typescript-loader');
+const { CheckerPlugin } = require('awesome-typescript-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const url = require('url');
@@ -20,7 +20,7 @@ const providePlugin = new webpack.ProvidePlugin({
   'query-string': 'query-string'
 });
 
-// const checkerPlugin = new CheckerPlugin();
+const checkerPlugin = new CheckerPlugin();
 
 module.exports = (env, argv) => {
   const devMode = argv.mode !== 'production';
@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
   return {
     entry: {
       dashboard: './saleor/static/dashboard/js/dashboard.js',
-        // 'dashboard-next': './saleor/static/dashboard-next/index.tsx',
+      // 'dashboard-next': './saleor/static/dashboard-next/index.tsx',
       document: './saleor/static/dashboard/js/document.js',
       storefront: './saleor/static/js/storefront.js'
     },
@@ -99,17 +99,17 @@ module.exports = (env, argv) => {
             }
           ]
         },
-          // {
-          // test: /\.tsx?$/,
-          // exclude: /node_modules/,
-          // loader: 'awesome-typescript-loader',
-          // options: {
-          //  reportFiles: [
-          //     'saleor/**/*.{ts,tsx}'
-          //   ],
-          //   useCache: true
-          // }
-          // },
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          loader: 'awesome-typescript-loader',
+          options: {
+           reportFiles: [
+              'saleor/**/*.{ts,tsx}'
+            ],
+            useCache: true
+          }
+        },
         {
           test: /\.(eot|otf|png|svg|jpg|ttf|woff|woff2)(\?v=[0-9.]+)?$/,
           loader: fileLoaderPath,
@@ -126,14 +126,13 @@ module.exports = (env, argv) => {
       bundleTrackerPlugin,
       extractCssPlugin,
       providePlugin,
-        // checkerPlugin
+      checkerPlugin
     ],
     resolve: {
       alias: {
         jquery: resolve('node_modules/jquery/dist/jquery.js')
       },
-        // extensions: ['.ts', '.tsx', '.js', '.jsx']
-      extensions: ['.js', '.jsx']
+      extensions: ['.ts', '.tsx', '.js', '.jsx']
     },
     devtool: 'sourceMap'
   };
