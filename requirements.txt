@@ -66,7 +66,7 @@ ipaddress==1.0.22
 jinja2==2.10
 jmespath==0.9.3
 jsonfield==2.0.2
-kombu==4.2.2
+kombu==4.2.1
 markdown==3.0.1
 markupsafe==1.1.0
 maxminddb-geolite2==2018.703
