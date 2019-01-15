@@ -60,7 +60,7 @@ module.exports = (env, argv) => {
   return {
     entry: {
       dashboard: './saleor/static/dashboard/js/dashboard.js',
-      // 'dashboard-next': './saleor/static/dashboard-next/index.tsx',
+      'dashboard-next': './saleor/static/dashboard-next/index.tsx',
       document: './saleor/static/dashboard/js/document.js',
       storefront: './saleor/static/js/storefront.js'
     },

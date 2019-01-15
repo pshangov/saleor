@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - npm run build-assets
-        # - npm run build-emails
+      - npm run build-emails
 
 artifacts:
   files:
@@ -15,6 +15,6 @@ artifacts:
 
 eb_codebuild_settings:
   CodeBuildServiceRole: arn:aws:iam::568395251971:role/SaleorServiceRoleForCodeBuild
-  ComputeType: BUILD_GENERAL1_SMALL
+  ComputeType: BUILD_GENERAL1_MEDIUM
   Image: aws/codebuild/nodejs:10.14.1
   Timeout: 60
