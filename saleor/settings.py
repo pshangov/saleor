@@ -45,8 +45,13 @@ INTERNAL_IPS = get_list(os.environ.get('INTERNAL_IPS', '127.0.0.1'))
 
 # Some cloud providers (Heroku) export REDIS_URL variable instead of CACHE_URL
 REDIS_URL = os.environ.get('REDIS_URL')
-# sys.exit("")
-raise Exception('REDIS URL: ' + REDIS_URL)
+
+if os.path.isfile('/var/tmp/envvars'):
+    with open('/var/tmp/envvars', 'r') as envvars:
+        raise Exception('ENVVARS: ' + envvars.read())
+else:
+    raise Exception('ENVVARS DOESNT EXIST')
+
 if REDIS_URL:
     CACHE_URL = os.environ.setdefault('CACHE_URL', REDIS_URL)
 CACHES = {'default': django_cache_url.config()}
