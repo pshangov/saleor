@@ -12,6 +12,8 @@ middleware here, or combine a Django application with an application of another
 framework.
 """
 import os
+from dotenv import load_dotenv
+load_dotenv()
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'saleor.settings')
 
 # This application object is used by any WSGI server configured to use this
