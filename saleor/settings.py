@@ -50,9 +50,6 @@ if REDIS_URL:
     CACHE_URL = os.environ.setdefault('CACHE_URL', REDIS_URL)
 CACHES = {'default': django_cache_url.config()}
 
-raise Exception('CACHES: ' + str(CACHES))
-
-
 if 'RDS_HOSTNAME' in os.environ:
     DATABASES = {
         'default': {
