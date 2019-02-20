@@ -476,6 +476,8 @@ if ES_URL:
         'default': {
             'hosts': ES_URL}}
 
+raise Exception("ELASTICSEARCH_URL: " + ELASTICSEARCH_URL + "\n" + "ES_URL: " + ES_URL + "\n" + "ENABLE_SEARCH: " + ENABLE_SEARCH)
+
 AUTHENTICATION_BACKENDS = [
     'saleor.account.backends.facebook.CustomFacebookOAuth2',
     'saleor.account.backends.google.CustomGoogleOAuth2',
